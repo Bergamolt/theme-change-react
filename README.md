@@ -17,24 +17,29 @@ npm run theme-change-react
 #### React
 
 ```
-import {ThemeProvider, changeThemeMode} from 'theme-change-react'
+import {ChangeThemeProvider, useChangeTheme} from 'theme-change-react'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 root.render(
   <React.StrictMode>
-    <ThemeProvider insertAt='body'>
+    <ChangeThemeProvider insertAt='body'>
       <App />
-    </ThemeProvider>
+    </ChangeThemeProvider>
   </React.StrictMode>
 )
 
 function SwitcherTheme() {
-  const {isDarkMode, changeThemeMode} = useThemeContext()
+  const {isDarkMode, changeThemeMode} = useChangeTheme()
 
   return (
     <div>
-      Enable dark theme: <input type='checkbox' value={isDarkMode} onChange={changeThemeMode} />
+      Enable dark theme:
+      <input
+        type='checkbox'
+        value={isDarkMode}
+        onChange={changeThemeMode}
+      />
     </div>
   )
 }

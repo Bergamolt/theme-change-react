@@ -1,4 +1,4 @@
-import useThemeContext from './Context'
-import ThemeProvider from './Provider'
+import useChangeTheme from './Context'
+import ChangeThemeProvider from './Provider'
 
-export { useThemeContext, ThemeProvider }
+export { useChangeTheme, ChangeThemeProvider }

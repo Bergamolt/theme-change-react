@@ -5,8 +5,8 @@ interface ContextState {
   changeThemeMode?: () => void
 }
 
-export const ThemeContext = createContext({} as ContextState)
+export const Context = createContext({} as ContextState)
 
-const useThemeContext = () => useContext(ThemeContext)
+const useChangeTheme = () => useContext(Context)
 
-export default useThemeContext
+export default useChangeTheme

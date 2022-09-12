@@ -1,13 +1,14 @@
 import { ReactNode, useEffect, useState } from 'react'
-import { ThemeContext } from './Context'
+import { Context } from './Context'
 
 type Props = {
+  isSystemDefault?: boolean
   insertAt?: 'html' | 'body'
   children: ReactNode
 }
 
-const ThemeProvider = (props: Props) => {
-  const { insertAt = 'html', children } = props
+const Provider = (props: Props) => {
+  const { isSystemDefault = true, insertAt = 'html', children } = props
 
   const [isDarkMode, setIsDarkMode] = useState(false)
 
@@ -27,7 +28,7 @@ const ThemeProvider = (props: Props) => {
 
     const onThemeMode = () => setIsDarkMode(isDarkThemeStorage ?? themeMode.matches)
 
-    if (isDarkThemeStorage === null) {
+    if (isSystemDefault && isDarkThemeStorage === null) {
       setIsDarkMode(themeMode.matches)
 
       themeMode.addEventListener('change', onThemeMode)
@@ -38,7 +39,7 @@ const ThemeProvider = (props: Props) => {
     return () => removeEventListener('change', onThemeMode)
   }, [isDarkMode])
 
-  return <ThemeContext.Provider value={{ isDarkMode, changeThemeMode }}>{children}</ThemeContext.Provider>
+  return <Context.Provider value={{ isDarkMode, changeThemeMode }}>{children}</Context.Provider>
 }
 
-export default ThemeProvider
+export default Provider
