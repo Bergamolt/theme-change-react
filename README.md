@@ -2,7 +2,7 @@
 npm run theme-change-react
 ```
 
-Example:
+#### CSS
 
 ```
   html[data-theme=light] body {
@@ -14,7 +14,7 @@ Example:
   }
 ```
 
-React
+#### React
 
 ```
 import {ThemeProvider, changeThemeMode} from 'theme-change-react'
