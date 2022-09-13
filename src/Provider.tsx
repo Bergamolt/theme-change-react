@@ -2,13 +2,14 @@ import { ReactNode, useEffect, useState } from 'react'
 import { Context } from './Context'
 
 type Props = {
-  isSystemDefault?: boolean
+  themeSystemDefault?: boolean
+  themeNames?: [string, string]
   insertAt?: 'html' | 'body'
   children: ReactNode
 }
 
 const Provider = (props: Props) => {
-  const { isSystemDefault = true, insertAt = 'html', children } = props
+  const { themeNames = ['light', 'dark'], themeSystemDefault = true, insertAt = 'html', children } = props
 
   const [isDarkMode, setIsDarkMode] = useState(false)
 
@@ -19,8 +20,9 @@ const Provider = (props: Props) => {
 
   useEffect(() => {
     const html = document?.querySelector(insertAt)
+    const [light, dark] = themeNames
 
-    html?.setAttribute('data-theme', isDarkMode ? 'dark' : 'light')
+    html?.setAttribute('data-theme', isDarkMode ? dark : light)
 
     // @ts-ignore
     const isDarkThemeStorage = JSON.parse(localStorage.getItem('TCR_DARK_MODE'))
@@ -28,7 +30,7 @@ const Provider = (props: Props) => {
 
     const onThemeMode = () => setIsDarkMode(isDarkThemeStorage ?? themeMode.matches)
 
-    if (isSystemDefault && isDarkThemeStorage === null) {
+    if (themeSystemDefault && isDarkThemeStorage === null) {
       setIsDarkMode(themeMode.matches)
 
       themeMode.addEventListener('change', onThemeMode)

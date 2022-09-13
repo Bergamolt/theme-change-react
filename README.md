@@ -1,3 +1,5 @@
+This is a simple package to switch between light and dark themes, and it can also switch the theme depending on the theme of the device.
+
 ```
 npm run theme-change-react
 ```
