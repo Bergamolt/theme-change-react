@@ -6,8 +6,16 @@
   "scripts": {
     "pub": "webpack && npm version patch && npm publish"
   },
-  "keywords": [],
-  "author": "bergamolt",
+  "keywords": [
+    "change theme",
+    "switch theme",
+    "change dark light theme"
+  ],
+  "author": "Valera Khoma (Bergamolt)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Bergamolt/theme-change-react"
+  },
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.15.0",
